@@ -47,3 +47,35 @@ Rapport de classification :
     accuracy                           0.80       812
    macro avg       0.80      0.80      0.80       812
 weighted avg       0.80      0.80      0.80       812
+
+# Autre essai
+Meilleurs paramètres trouvés :
+{'classifier': SVC(), 'classifier__C': 100, 'classifier__kernel': 'rbf'}
+Meilleur score ROC AUC :
+0.715438932092475
+
+Rapport de classification :
+              precision    recall  f1-score   support
+
+       False       0.87      0.95      0.91     18828
+        True       0.73      0.49      0.58      5364
+
+    accuracy                           0.85     24192
+   macro avg       0.80      0.72      0.74     24192
+weighted avg       0.84      0.85      0.83     24192
+
+# Autre essai avec balancing des targets
+Meilleurs paramètres trouvés :
+{'classifier': SVC(), 'classifier__C': 10, 'classifier__kernel': 'rbf'}
+Meilleur score ROC AUC :
+0.788307532891904
+
+Rapport de classification :
+              precision    recall  f1-score   support
+
+       False       0.78      0.80      0.79      5269
+        True       0.80      0.78      0.79      5324
+
+    accuracy                           0.79     10593
+   macro avg       0.79      0.79      0.79     10593
+weighted avg       0.79      0.79      0.79     10593
