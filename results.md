@@ -79,3 +79,36 @@ Rapport de classification :
     accuracy                           0.79     10593
    macro avg       0.79      0.79      0.79     10593
 weighted avg       0.79      0.79      0.79     10593
+
+# Résultats en Deep Learning
+```python
+# Séparation des données en ensembles d'entraînement et de test
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Création du modèle
+model = Sequential()
+model.add(Dense(64, activation='relu', input_dim=X_train.shape[1]))
+model.add(Dropout(0.4))
+model.add(Dense(64, activation='relu'))
+model.add(Dropout(0.4))
+model.add(Dense(1, activation='sigmoid'))
+
+# Définition des rappels ReduceLROnPlateau et EarlyStopping
+reduce_lr = ReduceLROnPlateau(monitor='val_loss', factor=0.2, patience=3, min_lr=0.0001)
+early_stopping = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
+
+# Compilation du modèle avec un learning rate initial
+initial_learning_rate = 0.001
+optimizer = tf.keras.optimizers.Adam(learning_rate=initial_learning_rate)
+model.compile(loss='binary_crossentropy', optimizer=optimizer, metrics=['accuracy'])
+
+# Entraînement du modèle avec les rappels ReduceLROnPlateau et EarlyStopping
+history = model.fit(X_train, y_train, epochs=100, batch_size=32, validation_data=(X_test, y_test), callbacks=[reduce_lr, early_stopping])
+
+# Évaluation du modèle sur les données de test
+loss, accuracy = model.evaluate(X_test, y_test)
+print("Perte sur les données de test :", loss)
+print("Précision sur les données de test :", accuracy)
+```
+Perte sur les données de test : 0.38624513149261475
+Précision sur les données de test : 0.8316798806190491
