@@ -69,3 +69,17 @@
     | macro avg    | 0.79      | 0.79   | 0.79     | 37792 |
     | weighted avg | 0.79      | 0.79   | 0.79     | 37792 |
 - Précision sur les données de test : 0.7903259949195597
+
+6. ## `ML_SGDClassifier_balanced.joblib` - balanced
+- Meilleurs paramètres trouvés :<br>
+{'classifier__alpha': 0.001, 'classifier__loss': 'hinge', 'classifier__max_iter': 1000, 'classifier__penalty': 'l2'}
+- Best score: 0.7781747080124555
+
+    |              | precision | recall | f1-score | support |
+    |--------------|-----------|--------|----------|--|
+    | False        | 0.77      | 0.79   | 0.78     | 18958 |
+    | True         | 0.78      | 0.76   | 0.77     | 18834 |
+    | accuracy     |           |        | 0.78     | 37792 |
+    | macro avg    | 0.78      | 0.78   | 0.78     | 37792 |
+    | weighted avg | 0.78      | 0.78   | 0.78     | 37792 |
+- Précision sur les données de test : 0.7492061812023709
