@@ -54,7 +54,7 @@
     | accuracy     |           |        | 0.85     | 24192   |
     | macro avg    | 0.81      | 0.71   | 0.74     | 24192   |
     | weighted avg | 0.84      | 0.85   | 0.83     | 24192   |
-- Précision sur les données de test : 
+- Précision sur les données de test : 0.836102843915344
 
 5. ## `best_model_in_deep_learning_balanced.h5` - 100 epochs + balanced
 - Meilleurs paramètres trouvés :<br>
@@ -83,3 +83,31 @@
     | macro avg    | 0.78      | 0.78   | 0.78     | 37792 |
     | weighted avg | 0.78      | 0.78   | 0.78     | 37792 |
 - Précision sur les données de test : 0.7492061812023709
+
+7. ## `best_model_in_deep_learning_change_layers.h5`
+- Meilleurs paramètres trouvés :<br>
+{'model__activation': 'relu', 'model__batch_size': 16, 'model__dropout_rate': 0.3, 'model__kernel_regularizer': None, 'model__learning_rate': 0.001}
+- Best score: 0.7868949890136718
+
+    |              | precision | recall | f1-score | support |
+    |--------------|-----------|--------|----------|--|
+    | False        | 0.81      | 0.76   | 0.78     | 18958 |
+    | True         | 0.77      | 0.82   | 0.79     | 18834 |
+    | accuracy     |           |        | 0.79     | 37792 |
+    | macro avg    | 0.79      | 0.79   | 0.79     | 37792 |
+    | weighted avg | 0.79      | 0.79   | 0.79     | 37792 |
+- Précision sur les données de test : 0.7881297629127858
+- Temps d'exécution: 22h42 pour 810 fits
+```python
+GridSearchCV(cv=5,
+             estimator=Pipeline(steps=[('scaler', StandardScaler()),
+                                       ('model',
+                                        <keras.wrappers.scikit_learn.KerasClassifier object at 0x7f0e19762820>)]),
+             param_grid={'model__activation': ['relu', 'sigmoid', 'tanh'],
+                         'model__batch_size': [16, 32, 64],
+                         'model__dropout_rate': [0.3, 0.4, 0.5],
+                         'model__kernel_regularizer': [None,
+                                                       <keras.regularizers.L2 object at 0x7f0e19762520>],
+                         'model__learning_rate': [0.001, 0.01, 0.1]},
+             verbose=2)
+```
